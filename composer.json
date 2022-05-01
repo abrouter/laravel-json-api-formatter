@@ -1,0 +1,23 @@
+{
+  "name": "abrouter/laravel-json-api-formatter",
+  "description": "Laravel json api formatter",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "AbRouter\\JsonApiFormatter\\": "src"
+    }
+  },
+  "require": {
+    "php": ">=7.4",
+    "illuminate/contracts": "^5.6|^6.0|^7.0|^8.0",
+    "illuminate/validation": "^5.6|^6.0|^7.0|^8.0",
+    "illuminate/http": "^5.6|^6.0|^7.0|^8.0",
+    "illuminate/database": "^5.6|^6.0|^7.0|^8.0",
+    "illuminate/pagination": "^5.6|^6.0|^7.0|^8.0",
+    "illuminate/auth": "^5.6|^6.0|^7.0|^8.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.3"
+  },
+  "repositories": []
+}
