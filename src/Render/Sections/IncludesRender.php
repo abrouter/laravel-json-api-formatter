@@ -11,7 +11,7 @@ class IncludesRender
     private DocumentRender $documentRender;
 
     public function __construct(
-        DocumentRender $documentRender,
+        DocumentRender $documentRender
     ) {
         $this->documentRender = $documentRender;
     }
