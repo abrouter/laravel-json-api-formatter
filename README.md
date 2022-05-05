@@ -1,1 +1,1 @@
-# laravel-json-api-formatter
+# NOT COMPLETELY READY VERSION. USE ON YOUR OWN
