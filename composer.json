@@ -1,6 +1,7 @@
 {
   "name": "abrouter/laravel-json-api-formatter",
   "description": "Laravel json api formatter",
+  "license": "LGPL-3.0-or-later",
   "type": "library",
   "autoload": {
     "psr-4": {
