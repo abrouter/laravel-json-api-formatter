@@ -8,9 +8,9 @@ use Traversable;
 
 abstract class DataProvider
 {
-    protected mixed $activeData;
+    protected \mixed $activeData;
 
-    public function __construct(mixed $activeData)
+    public function __construct(\mixed $activeData)
     {
         $this->setActiveData($activeData);
     }
@@ -27,7 +27,7 @@ abstract class DataProvider
      * @param mixed $activeData
      * @return DataProvider
      */
-    public function setActiveData(mixed $activeData): self
+    public function setActiveData(\mixed $activeData): self
     {
         $this->activeData = $activeData;
         return $this;
