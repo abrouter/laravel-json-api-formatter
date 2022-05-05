@@ -45,13 +45,13 @@ class RootSchema extends JsonResource
     }
 
 
-    public function setActiveData(\mixed $activeData): self
+    public function setActiveData($activeData): self
     {
         $this->activeData = $activeData;
         return $this;
     }
 
-    public function replaceDataProvider(\mixed $activeData): self
+    public function replaceDataProvider($activeData): self
     {
         $dataProviderClass = get_class($this->dataProvider);
         $this->dataProvider = new $dataProviderClass($activeData);
