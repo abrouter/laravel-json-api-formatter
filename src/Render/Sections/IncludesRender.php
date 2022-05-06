@@ -36,8 +36,12 @@ class IncludesRender
                  */
                 $document = $includeSection->getCallback()($documentSchema->getDataProvider());
 
-                foreach ($document->toArray()['data'] as $include) {
-                    $acc[] = $include;
+                if ($documentSchema->getDataProvider()->isCollection()) {
+                    foreach ($document->toArray()['data'] as $include) {
+                        $acc[] = $include;
+                    }
+                } else {
+                    $acc[] = $document->toArray()['data'];
                 }
 
                 return $acc;
