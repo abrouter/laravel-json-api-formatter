@@ -25,6 +25,10 @@ class RequestWrapper
 
     public function getFilter(): array
     {
+        if ($this->request === null) {
+            return [];
+        }
+
         return (array) $this->request->get('filter') ?? [];
     }
 }
