@@ -35,7 +35,7 @@ class IncludesRender
                  * @var DocumentSchema $document
                  */
                 $document = $includeSection->getCallback()($documentSchema->getDataProvider());
-                $acc[] = $this->documentRender->render($document);
+                $acc[] = $document->toArray();
                 return $acc;
             },
             []
