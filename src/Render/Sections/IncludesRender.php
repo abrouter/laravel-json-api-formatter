@@ -35,7 +35,11 @@ class IncludesRender
                  * @var DocumentSchema $document
                  */
                 $document = $includeSection->getCallback()($documentSchema->getDataProvider());
-                $acc[] = $document->toArray();
+
+                foreach ($document->toArray()['data'] as $include) {
+                    $acc[] = $include;
+                }
+
                 return $acc;
             },
             []
