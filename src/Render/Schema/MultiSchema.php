@@ -29,11 +29,17 @@ class MultiSchema implements SchemaInterface
             $activeData = $activeData->all();
         }
 
+        $includes = [];
         $response = [
             'data' => array_reduce(
                 $activeData,
-                function (array $acc, $activeData) use ($documentSchema) {
-                    $acc[] = $this->documentRender->render($documentSchema->setActiveData($activeData));
+                function (array $acc, $activeData) use ($documentSchema, &$includes) {
+                    $documentSchema->setActiveData($activeData);
+                    $acc[] = $this->documentRender->render($documentSchema);
+                    foreach($this->includesRender->render($documentSchema) as $include) {
+                        $includes[] = $include;
+                    }
+
                     return $acc;
                 },
                 []
@@ -43,8 +49,6 @@ class MultiSchema implements SchemaInterface
         if (!$documentSchema->getMeta()->isEmpty()) {
             $response['meta'] = $documentSchema->getMeta()->getProperties();
         }
-
-        $includes = $this->includesRender->render($documentSchema);
 
         if (!empty($includes)) {
             $response['included'] = $includes;
