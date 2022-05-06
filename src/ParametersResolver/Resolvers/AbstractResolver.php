@@ -8,5 +8,5 @@ use AbRouter\JsonApiFormatter\FrameworkBridge\RequestWrapper;
 
 abstract class AbstractResolver
 {
-    abstract public function resolve(DocumentSchema $documentSchema, RequestWrapper $requestWrapper): void;
+    abstract public function resolve(DocumentSchema $documentSchema, ?RequestWrapper $requestWrapper): void;
 }

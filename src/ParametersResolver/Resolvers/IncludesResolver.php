@@ -8,8 +8,12 @@ use AbRouter\JsonApiFormatter\FrameworkBridge\RequestWrapper;
 
 class IncludesResolver extends AbstractResolver
 {
-    public function resolve(DocumentSchema $documentSchema, RequestWrapper $requestWrapper): void
+    public function resolve(DocumentSchema $documentSchema, ?RequestWrapper $requestWrapper): void
     {
+        if (empty($requestWrapper)) {
+            return ;
+        }
+
         if (empty($requestWrapper->getIncludesList())) {
             return ;
         }
