@@ -5,10 +5,16 @@ namespace AbRouter\JsonApiFormatter\FrameworkBridge\DB;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Collection as CollectionDb;
 
 class ActiveDataModel
 {
     private Model $activeData;
+
+    /**
+     * @var Collection|CollectionDb|null
+     */
+    private $collection = null;
 
     private bool $actionable;
 
@@ -17,6 +23,7 @@ class ActiveDataModel
         $this->actionable = $this->isEloquent($activeData);
         if ($this->actionable) {
             $this->activeData = $this->extractModel($activeData);
+            $this->collection = $activeData;
         }
     }
 
@@ -26,11 +33,15 @@ class ActiveDataModel
             return null;
         }
 
-        if (!($this->activeData instanceof Collection)) {
+        if (!($this->collection instanceof Collection)) {
             return null;
         }
 
-        return $this->activeData->where($conditions);
+        foreach ($conditions as $condition) {
+            $this->collection->where($condition[0], $condition[1], $condition[2]);
+        }
+
+        return $this->collection;
     }
 
     private function isEloquent($activeData): bool
