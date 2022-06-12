@@ -26,6 +26,10 @@ class ActiveDataModel
             return null;
         }
 
+        if ($this->activeData instanceof Collection) {
+            return null;
+        }
+
         return $this->activeData->newQuery()->where($conditions)->get();
     }
 
