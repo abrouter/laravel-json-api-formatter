@@ -26,11 +26,11 @@ class ActiveDataModel
             return null;
         }
 
-        if ($this->activeData instanceof Collection) {
+        if (!($this->activeData instanceof Collection)) {
             return null;
         }
 
-        return $this->activeData->newQuery()->where($conditions)->get();
+        return $this->activeData->whereAll($conditions)->get();
     }
 
     private function isEloquent($activeData): bool
