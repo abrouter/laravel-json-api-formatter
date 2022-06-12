@@ -30,7 +30,7 @@ class ActiveDataModel
             return null;
         }
 
-        return $this->activeData->whereAll($conditions)->get();
+        return $this->activeData->where($conditions);
     }
 
     private function isEloquent($activeData): bool
