@@ -38,7 +38,7 @@ class ActiveDataModel
         }
 
         foreach ($conditions as $condition) {
-            $this->collection->where($condition[0], $condition[1], $condition[2]);
+            $this->collection = $this->collection->where($condition[0], $condition[1], $condition[2]);
         }
 
         return $this->collection;
